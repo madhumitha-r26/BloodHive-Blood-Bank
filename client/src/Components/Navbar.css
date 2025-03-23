@@ -1,0 +1,37 @@
+
+.menu a {
+  background-color: #e50800; 
+}
+
+.menu a:hover{
+  text-decoration: underline;
+}
+
+
+.menu a:focus,
+.menu a:active {
+  background-color: #e50800; 
+}
+
+@media screen and (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #e50800;
+  }
+
+  .menu.block {
+    display: inline-block;
+  }
+
+  .menu a {
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid #fff;
+  }
+
+  .menu a:first-child {
+    border-top: none;
+  }
+}

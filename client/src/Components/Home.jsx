@@ -7,14 +7,15 @@ import { Send } from "@mui/icons-material";
 import PlaceIcon from "@mui/icons-material/Place";
 import EmailIcon from "@mui/icons-material/Email";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import { NavLink } from "react-router-dom";
 
 function Home() {
   return (
     <div>
       <Navbar />
 
-      <div className="pt-16"> {/* Add padding to the top */}
-        <section id="home" className="pt-4 mt-4 flex items-center justify-center">
+      <div className="pt-12"> 
+        <section id="home" className="pt-4 mt-4 flex items-center justify-center p-4 mt-0 pt-20">
           <div className="max-w-md mx-auto overflow-hidden gap-4 md:max-w-3xl">
             <div className="md:flex">
               <div className="flex items-center justify-center md:shrink-0">
@@ -25,9 +26,11 @@ function Home() {
                   <p className="text-xl italic text-wrap text-red-500">
                     "Ensuring timely, safe, and efficient blood transfusions for all."
                   </p>
-                  <button className="btn bg-red-700 text-white border-transparent shadow-none mt-4">
-                    Register for Donation
-                  </button>
+                 
+            
+                  <NavLink to={"/register"} className="btn bg-red-700 text-white border-transparent shadow-none mt-4">  Register for Donation </NavLink>
+      
+
                 </div>
               </div>
               <div>
@@ -41,7 +44,7 @@ function Home() {
           </div>
         </section>
 
-        <section id="mission" className="bg-red-600 text-white p-4 mt-0">
+        <section id="mission" className="bg-red-600 text-white p-4 mt-0 pt-20">
           <div className="flex w-full flex-col lg:flex-row p-4">
             <div className="card bg-transparent rounded-box grid h-full w-full grow place-items-center m-4">
               <img src={donors} className="h-full w-full" />
@@ -58,7 +61,7 @@ function Home() {
           </div>
         </section>
 
-        <section id="contact" className="bg-transparent p-4 mt-0 pt-16"> {/* Add padding to the top */}
+        <section id="contact" className="bg-transparent p-4 mt-0 pt-20">
           <h2 className="text-center text-3xl text-red-700 uppercase font-semibold">
             Feel Free to Contact us
           </h2>
@@ -69,22 +72,22 @@ function Home() {
           >
             <input
               type="text"
-              className="py-3 px-4 block w-full mt-5 border-gray-200 bg-neutral-400 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-              placeholder="Enter Name"
+              className="py-3 px-4 block w-full mt-5 border-gray-200 bg-neutral-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+              placeholder="Enter Name" required
             />
             <input
               type="text"
-              className="py-3 px-4 block w-full mt-5 border-gray-200 bg-neutral-400 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-              placeholder="Enter Email"
+              className="py-3 px-4 block w-full mt-5 border-gray-200 bg-neutral-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+              placeholder="Enter Email" required
             />
             <input
               type="text"
-              className="py-3 px-4 block w-full mt-5 border-gray-200 bg-neutral-400 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-              placeholder="Enter Phone"
+              className="py-3 px-4 block w-full mt-5 border-gray-200 bg-neutral-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+              placeholder="Enter Phone" required
             />
             <textarea
-              className="py-3 px-4 block w-full h-60 mt-5 border-gray-200 bg-neutral-400 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-              placeholder="Enter Message"
+              className="py-3 px-4 block w-full h-60 mt-5 border-gray-200 bg-neutral-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+              placeholder="Enter Message" required
             />
           </form>
 
@@ -107,7 +110,7 @@ function Home() {
             <div>
               <button
                 type="submit"
-                className="btn my-5 w-full h-auto shadow-none text-white bg-red-600 border-white hover:border-white active:border-white p-2"
+                className="btn my-5 w-full h-auto border-transparent shadow-none text-white bg-red-600 border-white hover:border-white active:border-white p-2"
               >
                 <Send /> Send
               </button>

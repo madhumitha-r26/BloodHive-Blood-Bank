@@ -1,0 +1,38 @@
+h2{
+    font-family: "Poppins", sans-serif;
+  }
+
+  body{
+    background-color: #ffeded;
+    color: black;
+  }
+
+  input{
+    color: black;
+  }
+
+  input::placeholder, textarea::placeholder, select::placeholder{
+    color: #2a2828;
+  }
+
+  input[type="date"]{
+    color: #2a2828;
+  }
+
+  .date-input {
+    position: relative;
+    padding-right: 2.5rem; /* Adjust as needed */
+  }
+  
+  .calendar-icon {
+    position: absolute;
+    top: 50%;
+    right: 0.75rem; /* Adjust as needed */
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #2a2828; /* Dark color for the icon */
+  }
+  
+  .calendar-icon .fas {
+    font-size: 1rem; /* Adjust as needed */
+  }

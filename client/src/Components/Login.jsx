@@ -1,7 +1,21 @@
-import React from "react";
-import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";  
+import React, { useState } from "react";
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const AdminLogin = (e) => {
+    e.preventDefault();
+    if (email === "admin@gmail.com" && password === "admin123") {
+      navigate("/dashboard");
+    } else {
+      alert("Invalid Credentials");
+    }
+  };
+
   return (
     <div>
       <button
@@ -15,19 +29,19 @@ function Login() {
         <div className="modal-box bg-red-500 p-4">
           <form method="dialog">
             <button className="btn btn-sm border-transparent shadow-none bg-transparent absolute right-2 top-2">
-              {" "}
-              <CloseOutlinedIcon />{" "}
+              <CloseOutlinedIcon />
             </button>
           </form>
           <h5 className="pt-10 text-center text-xl font-semibold">
             ADMIN LOGIN
           </h5>
-          <form className="flex justify-center items-center pt-5">
+          <form className="flex justify-center items-center pt-5" onSubmit={AdminLogin}>
             <div className="artboard phone-1 space-y-4">
               <input
                 type="email"
                 name="email"
                 placeholder="Enter Email"
+                onChange={(e) => setEmail(e.target.value)}
                 className="input input-bordered w-full bg-red-50 focus:outline-none"
                 required
               />
@@ -35,10 +49,14 @@ function Login() {
                 type="password"
                 name="password"
                 placeholder="Enter Password"
+                onChange={(e) => setPassword(e.target.value)}
                 className="input input-bordered w-full bg-red-50 focus:outline-none"
                 required
               />
-              <button className="btn bg-red-700 text-white border-transparent w-full hover:bg-red-600 focus:outline-none">
+              <button
+                type="submit"
+                className="btn bg-red-700 text-white border-transparent w-full hover:bg-red-600 focus:outline-none"
+              >
                 Login
               </button>
             </div>

@@ -11,13 +11,13 @@ function Register() {
         <u>DONOR REGISTRATION FORM</u>
       </h5>
       <form className="flex justify-center items-center pt-5">
-        <div className="artboard phone-1 space-y-4 m-8 max-w-xs">
+        <div className="artboard phone-1 space-y-4 m-8 w-full">
           <label>Name:</label>
           <input
             type="text"
             name="username"
             placeholder="John Doe"
-            className="input input-bordered border-red-300 border-2 bg-red-50 focus:outline-none w-full"
+            className="py-3 px-4 block w-full mt-3 border-gray-200 bg-neutral-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
             required
           />
           <label>Date of Birth:</label>
@@ -25,15 +25,12 @@ function Register() {
             <input
               type="date"
               name="dob"
-              className="input input-bordered border-red-300 border-2 bg-red-50 focus:outline-none w-full date-input"
+              className="py-3 px-4 block w-full mt-3 border-gray-200 bg-neutral-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none date-input"
               required
             />
-            <span className="calendar-icon">
-              <i className="fas fa-calendar-alt"></i>
-            </span>
           </div>
           <label>Gender:</label> <br />
-          <div className="flex gap-2" required>
+          <div className="flex gap-2 mt-3" required>
             <div className="flex gap-2">
               <input
                 type="radio"
@@ -54,8 +51,8 @@ function Register() {
           </div>
           <label>Blood Group:</label>
           <select
-            defaultValue="-SELECT-"
-            className="select select-bordered border-red-300 border-2 bg-red-50 focus:outline-none w-full"
+          defaultValue={"-SELECT-"}
+            className="py-3 px-4 block w-full h-full mt-3 border-gray-200 bg-neutral-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none select"
             required
           >
             <option disabled={true}>-SELECT-</option>
@@ -73,7 +70,7 @@ function Register() {
             type="email"
             name="email"
             placeholder="johndoe@gmail.com"
-            className="input input-bordered border-red-300 border-2 bg-red-50 focus:outline-none w-full"
+            className="py-3 px-4 block w-full mt-3 border-gray-200 bg-neutral-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
             required
           />
           <label>Phone:</label>
@@ -81,13 +78,13 @@ function Register() {
             type="tel"
             name="phone"
             placeholder="123-456-789"
-            className="input input-bordered border-red-300 border-2 bg-red-50 focus:outline-none w-full"
+            className="py-3 px-4 block w-full mt-3 border-gray-200 bg-neutral-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
             required
           />
           <label>Address:</label>
           <textarea
             placeholder="Madurai, Tamil Nadu, India"
-            className="textarea textarea-bordered border-red-300 border-2 bg-red-50 focus:outline-none w-full"
+            className="py-3 px-4 block w-full h-32 mt-3 border-gray-200 bg-neutral-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
             required
           ></textarea>
           <button className="btn bg-red-700 text-white border-transparent w-full hover:bg-red-600 focus:outline-none">

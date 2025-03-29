@@ -36,6 +36,38 @@ function Dashboard() {
             <option>AB '-ve'</option>
           </select>
       </div>
+
+<div className="p-5 mt-3">
+  <h3 className="text-center text-2xl font-semibold text-red-700">DONOR'S DETAILS</h3>
+  <div className="overflow-x-auto">
+  <table className="table">
+    {/* head */}
+    <thead>
+      <tr>       
+        <th>Name</th>
+        <th>Date of Birth</th>
+        <th>Gender</th>
+        <th>Blood Group</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+   <tr>
+    <td>Madhu</td>
+    <td>26/03/2002</td>
+    <td>Female</td>
+    <td>O '+ve'</td>
+    <td>madhu@gmail.com</td>
+    <td>1234567890</td>
+    <td>Madurai, Tamil Nadu, India</td>
+   </tr>
+     </tbody>
+  </table>
+</div>
+</div>
+
         <Footer />
       </div>
     </div>

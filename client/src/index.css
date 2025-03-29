@@ -19,3 +19,7 @@
   input::placeholder, textarea::placeholder{
     color: #545151;
   }
+
+  th{
+    color: #545151;
+  }

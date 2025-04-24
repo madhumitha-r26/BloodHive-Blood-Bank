@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import logo from "./imgs/logo.png";
 import "./Navbar.css";
 import Footer from "./Footer";
 import Logout from "./Logout";
 
 function Dashboard() {
+  const [donors, setDonors] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/users") // Ensure this matches your backend route
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        return response.json();
+      })
+      .then((data) => setDonors(data))
+      .catch((error) => console.error("Error fetching donors:", error));
+  }, []);
+
   return (
     <div>
       <nav className="navbar bg-red-600 p-4 fixed top-0 left-0 right-0 z-50">
@@ -18,10 +32,10 @@ function Dashboard() {
         <div></div>
       </nav>
       <div className="pt-20">
-      <div className="p-5 flex gap-2 mt-3">
-      <label className="text-xl">Select Blood Group</label>
+        <div className="p-5 flex gap-2 mt-3">
+          <label className="text-xl">Select Blood Group</label>
           <select
-          defaultValue={"-SELECT-"}
+            defaultValue={"-SELECT-"}
             className="py-3 px-4 block w-48 h-full border-gray-200 bg-neutral-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none select"
             required
           >
@@ -35,38 +49,40 @@ function Dashboard() {
             <option>AB '+ve'</option>
             <option>AB '-ve'</option>
           </select>
-      </div>
+        </div>
 
-<div className="p-5 mt-3">
-  <h3 className="text-center text-2xl font-semibold text-red-700">DONOR'S DETAILS</h3>
-  <div className="overflow-x-auto">
-  <table className="table">
-    {/* head */}
-    <thead>
-      <tr>       
-        <th>Name</th>
-        <th>Date of Birth</th>
-        <th>Gender</th>
-        <th>Blood Group</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Address</th>
-      </tr>
-    </thead>
-    <tbody>
-   <tr>
-    <td>Madhu</td>
-    <td>26/03/2002</td>
-    <td>Female</td>
-    <td>O '+ve'</td>
-    <td>madhu@gmail.com</td>
-    <td>1234567890</td>
-    <td>Madurai, Tamil Nadu, India</td>
-   </tr>
-     </tbody>
-  </table>
-</div>
-</div>
+        <div className="p-5 mt-3">
+          <h3 className="text-center text-2xl font-semibold text-red-700">DONOR'S DETAILS</h3>
+          <div className="overflow-x-auto">
+            <table className="table">
+              {/* head */}
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Date of Birth</th>
+                  <th>Gender</th>
+                  <th>Blood Group</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Address</th>
+                </tr>
+              </thead>
+              <tbody>
+                {donors.map((donor, index) => (
+                  <tr key={index}>
+                    <td>{donor.name}</td>
+                    <td>{new Date(donor.dob).toLocaleDateString()}</td>
+                    <td>{donor.gender}</td>
+                    <td>{donor.blood_group}</td>
+                    <td>{donor.email}</td>
+                    <td>{donor.phone}</td>
+                    <td>{donor.address}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
 
         <Footer />
       </div>

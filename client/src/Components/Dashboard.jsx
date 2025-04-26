@@ -6,18 +6,52 @@ import Logout from "./Logout";
 
 function Dashboard() {
   const [donors, setDonors] = useState([]);
-
+  const [filteredDonors, setFilteredDonors] = useState([]);
+  const [selectedBloodGroup, setSelectedBloodGroup] = useState("-SELECT-"); // <-- Important change!
+  
   useEffect(() => {
-    fetch("http://localhost:5000/users") // Ensure this matches your backend route
+    fetch("http://localhost:5000/api/users")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
         return response.json();
       })
-      .then((data) => setDonors(data))
+      .then((data) => {
+        console.log("Fetched Data:", data);
+        setDonors(data); // or setDonors(data.users) if backend returns { users: [...] }
+        setFilteredDonors(data);
+      })
       .catch((error) => console.error("Error fetching donors:", error));
   }, []);
+  
+  const handleBloodGroupChange = (e) => {
+    const selectedGroup = e.target.value;
+    setSelectedBloodGroup(selectedGroup);
+  
+    if (selectedGroup === "-SELECT-") {
+      setFilteredDonors(donors);
+    } else {
+      const filtered = donors.filter(
+        (donor) =>
+          donor.blood_group.toLowerCase().trim() ===
+          selectedGroup.toLowerCase().trim()
+      );
+      setFilteredDonors(filtered);
+    }
+  };
+  
+  const bloodGroups = [
+    "-SELECT-",
+    "O +ve",
+    "O -ve",
+    "A +ve",
+    "A -ve",
+    "B +ve",
+    "B -ve",
+    "AB +ve",
+    "AB -ve",
+  ];
 
   return (
     <div>
@@ -35,24 +69,23 @@ function Dashboard() {
         <div className="p-5 flex gap-2 mt-3">
           <label className="text-xl">Select Blood Group</label>
           <select
-            defaultValue={"-SELECT-"}
+            value={selectedBloodGroup}
+            onChange={handleBloodGroupChange}
             className="py-3 px-4 block w-48 h-full border-gray-200 bg-neutral-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none select"
             required
           >
-            <option disabled={true}>-SELECT-</option>
-            <option>O '+ve'</option>
-            <option>O '-ve'</option>
-            <option>A '+ve'</option>
-            <option>A '-ve'</option>
-            <option>B '+ve'</option>
-            <option>B '-ve'</option>
-            <option>AB '+ve'</option>
-            <option>AB '-ve'</option>
+            {bloodGroups.map((group, index) => (
+              <option key={index} value={group}>
+                {group}
+              </option>
+            ))}
           </select>
         </div>
 
         <div className="p-5 mt-3">
-          <h3 className="text-center text-2xl font-semibold text-red-700">DONOR'S DETAILS</h3>
+          <h3 className="text-center text-2xl font-semibold text-red-700">
+            DONOR'S DETAILS
+          </h3>
           <div className="overflow-x-auto">
             <table className="table">
               {/* head */}
@@ -68,7 +101,8 @@ function Dashboard() {
                 </tr>
               </thead>
               <tbody>
-                {donors.map((donor, index) => (
+                {console.log("Filtered Donors Before Rendering:", filteredDonors)} {/* Debugging */}
+                {filteredDonors.map((donor, index) => (
                   <tr key={index}>
                     <td>{donor.name}</td>
                     <td>{new Date(donor.dob).toLocaleDateString()}</td>

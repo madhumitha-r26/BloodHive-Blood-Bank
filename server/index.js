@@ -13,7 +13,7 @@ app.use(cors())
 
 
 const userRouter = require("./router/userRouter");
-app.use("/users", userRouter);
+app.use("/api", userRouter);
 
 app.listen(process.env.PORT, () => {
     console.log(`SERVER IS RUNNING ON PORT - ${process.env.PORT}`);

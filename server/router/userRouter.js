@@ -19,23 +19,23 @@ router.post("/register", async (req, res) => {
 });
 
 //-----------------------------get donors-------------------------------
-router.get("api/users", async (req, res) => {
+router.get("/users", async (req, res) => {
   try {
-    const { blood_group } = req.query; // Get the blood group from query parameters
+    console.log("Query Parameters:", req.query);
+    const { blood_group } = req.query;
 
     let donors;
-    if (blood_group) {
-      // If a blood group is specified, filter donors by blood group
-      donors = await userModel.find({ blood_group: blood_group });
+    if (blood_group && blood_group !== "-SELECT-") {
+      donors = await userModel.find({
+        blood_group: { $regex: new RegExp(`^${blood_group}$`, "i") } // case insensitive exact match
+      });
     } else {
-      // Otherwise, fetch all donors
       donors = await userModel.find();
     }
 
     res.status(200).json(donors);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error("Error fetching donors:", error);
+    res.status(500).json({ message: "Server error while fetching donors." });
   }
 });
-
-module.exports = router;

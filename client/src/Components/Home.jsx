@@ -3,11 +3,9 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import doctor from "./imgs/doctor.png";
 import donors from "./imgs/donors.png";
-import { Send } from "@mui/icons-material";
-import PlaceIcon from "@mui/icons-material/Place";
-import EmailIcon from "@mui/icons-material/Email";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+
 import { NavLink } from "react-router-dom";
+import Contact from "./Contact"
 
 function Home() {
   return (
@@ -61,62 +59,7 @@ function Home() {
           </div>
         </section>
 
-        <section id="contact" className="bg-transparent p-4 mt-0 pt-20">
-          <h2 className="text-center text-3xl text-red-700 uppercase font-semibold">
-            Feel Free to Contact us
-          </h2>
-
-          <form
-            action="mailto:bloodhive.official@yahoo.com"
-            className="flex flex-wrap items-center justify-center m-5"
-          >
-            <input
-              type="text"
-              className="py-3 px-4 block w-full mt-5 border-gray-200 bg-neutral-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-              placeholder="Enter Name" required
-            />
-            <input
-              type="text"
-              className="py-3 px-4 block w-full mt-5 border-gray-200 bg-neutral-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-              placeholder="Enter Email" required
-            />
-            <input
-              type="text"
-              className="py-3 px-4 block w-full mt-5 border-gray-200 bg-neutral-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-              placeholder="Enter Phone" required
-            />
-            <textarea
-              className="py-3 px-4 block w-full h-60 mt-5 border-gray-200 bg-neutral-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-              placeholder="Enter Message" required
-            />
-          </form>
-
-          <div className="flex justify-between mx-5 flex-wrap-reverse md">
-            <div className=" mt-2">
-              <div className="flex">
-                <PlaceIcon className="text-red-700" />
-                <p className="text-red-600 font-medium">&nbsp; Madurai, Tamil Nadu, India</p>
-              </div>
-              <div className="flex">
-                <EmailIcon className="text-red-700" />
-                <p className="text-red-600 font-medium">&nbsp; bloodhive.official@yahoo.com</p>
-              </div>
-              <div className="flex">
-                <LocalPhoneIcon className="text-red-700" />
-                <p className="text-red-600 font-medium">&nbsp; 123-456-890</p>
-              </div>
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                className="btn my-5 w-full h-auto border-transparent shadow-none text-white bg-red-600 border-white hover:border-white active:border-white p-2"
-              >
-                <Send /> Send
-              </button>
-            </div>
-          </div>
-        </section>
+            <Contact />
       </div>
 
       <Footer />

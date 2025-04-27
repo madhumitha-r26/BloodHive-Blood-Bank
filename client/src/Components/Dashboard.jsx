@@ -5,11 +5,12 @@ import Footer from "./Footer";
 import Logout from "./Logout";
 
 function Dashboard() {
-  const [donors, setDonors] = useState([]);
-  const [filteredDonors, setFilteredDonors] = useState([]);
-  const [selectedBloodGroup, setSelectedBloodGroup] = useState("-SELECT-"); // <-- Important change!
-  
+  const [donors, setDonors] = useState([]); // All donors fetched from the database
+  const [filteredDonors, setFilteredDonors] = useState([]); // Donors filtered by blood group
+  const [selectedBloodGroup, setSelectedBloodGroup] = useState("-SELECT-"); // Selected blood group
+
   useEffect(() => {
+    // Fetch all donors from the backend
     fetch("http://localhost:5000/api/users")
       .then((response) => {
         if (!response.ok) {
@@ -18,29 +19,42 @@ function Dashboard() {
         return response.json();
       })
       .then((data) => {
-        console.log("Fetched Data:", data);
-        setDonors(data); // or setDonors(data.users) if backend returns { users: [...] }
-        setFilteredDonors(data);
+        console.log("Fetched Data:", data); // Debugging: Log the fetched data
+        setDonors(data);
+        setFilteredDonors(data); // Initially, show all donors
       })
       .catch((error) => console.error("Error fetching donors:", error));
   }, []);
-  
+
   const handleBloodGroupChange = (e) => {
     const selectedGroup = e.target.value;
     setSelectedBloodGroup(selectedGroup);
   
-    if (selectedGroup === "-SELECT-") {
-      setFilteredDonors(donors);
-    } else {
-      const filtered = donors.filter(
-        (donor) =>
-          donor.blood_group.toLowerCase().trim() ===
-          selectedGroup.toLowerCase().trim()
-      );
-      setFilteredDonors(filtered);
-    }
-  };
+    // Construct the URL
+    const url =
+      selectedGroup === "-SELECT-"
+        ? "http://localhost:5000/api/users" // Fetch all donors
+        : `http://localhost:5000/api/users?blood_group=${encodeURIComponent(
+            selectedGroup
+          )}`;
   
+    console.log("Fetching URL:", url); // Debugging: Log the URL
+  
+    // Fetch data from the backend
+    fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Filtered Donors from Backend:", data); // Debugging
+        setFilteredDonors(data);
+      })
+      .catch((error) => console.error("Error fetching filtered donors:", error));
+  };
+
   const bloodGroups = [
     "-SELECT-",
     "O +ve",
@@ -87,34 +101,41 @@ function Dashboard() {
             DONOR'S DETAILS
           </h3>
           <div className="overflow-x-auto">
-            <table className="table">
-              {/* head */}
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Date of Birth</th>
-                  <th>Gender</th>
-                  <th>Blood Group</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-                  <th>Address</th>
-                </tr>
-              </thead>
-              <tbody>
-                {console.log("Filtered Donors Before Rendering:", filteredDonors)} {/* Debugging */}
-                {filteredDonors.map((donor, index) => (
-                  <tr key={index}>
-                    <td>{donor.name}</td>
-                    <td>{new Date(donor.dob).toLocaleDateString()}</td>
-                    <td>{donor.gender}</td>
-                    <td>{donor.blood_group}</td>
-                    <td>{donor.email}</td>
-                    <td>{donor.phone}</td>
-                    <td>{donor.address}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <table className="table">
+    {/* head */}
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date of Birth</th>
+        <th>Gender</th>
+        <th>Blood Group</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      {filteredDonors.length > 0 ? (
+        filteredDonors.map((donor) => (
+          <tr key={donor._id}>
+            <td>{donor.name}</td>
+            <td>{new Date(donor.dob).toLocaleDateString()}</td>
+            <td>{donor.gender}</td>
+            <td>{donor.blood_group}</td>
+            <td>{donor.email}</td>
+            <td>{donor.phone}</td>
+            <td>{donor.address}</td>
+          </tr>
+        ))
+      ) : (
+        <tr>
+          <td colSpan="7" className="text-center">
+            No donors found.
+          </td>
+        </tr>
+      )}
+    </tbody>
+  </table>
           </div>
         </div>
 

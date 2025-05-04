@@ -12,8 +12,8 @@ app.use(express.json())
 app.use(cors())
 
 
-const userRouter = require("./router/userRouter");
-app.use("/api", userRouter);
+const donorRouter = require("./router/donorRouter");
+app.use("/api", donorRouter);
 
 app.listen(process.env.PORT, () => {
     console.log(`SERVER IS RUNNING ON PORT - ${process.env.PORT}`);

@@ -120,14 +120,14 @@ function Register() {
             <option disabled={true} value="">
               -SELECT-
             </option>
-            <option>O '+ve'</option>
-            <option>O '-ve'</option>
-            <option>A '+ve'</option>
-            <option>A '-ve'</option>
-            <option>B '+ve'</option>
-            <option>B '-ve'</option>
-            <option>AB '+ve'</option>
-            <option>AB '-ve'</option>
+            <option>O+ve</option>
+            <option>O-ve</option>
+            <option>A+ve</option>
+            <option>A-ve</option>
+            <option>B+ve</option>
+            <option>B-ve</option>
+            <option>AB+ve</option>
+            <option>AB-ve</option>
           </select>
           <label>Email:</label>
           <input

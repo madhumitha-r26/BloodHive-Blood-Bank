@@ -22,7 +22,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/register", {
+      const response = await fetch("https://blood-hive-blood-bank-server-1v3qd84fj.vercel.app/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

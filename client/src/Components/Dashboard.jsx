@@ -13,10 +13,10 @@ function Dashboard() {
   const fetchDonors = (group) => {
     const url =
       group && group !== "-SELECT-"
-        ? `http://localhost:5000/api/donors?blood_group=${encodeURIComponent(
+        ? `https://blood-hive-blood-bank-server-1v3qd84fj.vercel.app/api/donors?blood_group=${encodeURIComponent(
             group
           )}`
-        : "http://localhost:5000/api/donors";
+        : "https://blood-hive-blood-bank-server-1v3qd84fj.vercel.app/api/donors";
 
     fetch(url)
       .then((response) => {

@@ -9,7 +9,12 @@ const app = express();
 DbConnection()
 dotenv.config()
 app.use(express.json())
-app.use(cors())
+app.use(cors(
+    {origin: "https://blood-hive-blood-bank.vercel.app/",
+    credentials: true,
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type,Authorization",}
+))
 
 
 const donorRouter = require("./router/donorRouter");

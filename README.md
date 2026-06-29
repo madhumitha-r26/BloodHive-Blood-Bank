@@ -1,10 +1,6 @@
-Since your project also includes a **React Admin Login Interface**, the README should describe both the **backend API** and the **frontend admin panel**.
+# 🩸 BloodHive - Blood Bank Management System
 
----
-
-# 🩸 Blood Donor Management System
-
-A full-stack **Blood Donor Management System** built using **React, Node.js, Express, and MongoDB**. The application allows users to register as blood donors, search donors by blood group, and enables administrators to manage donor records through a secure admin dashboard.
+A full-stack **Blood Bank Management System** built using **React, Node.js, Express, and MongoDB**. The application allows users to register as blood donors, search donors by blood group, and enables administrators to manage donor records through a secure admin dashboard.
 
 ---
 

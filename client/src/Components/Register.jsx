@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import "./Register.css"; // Import the custom CSS file
 
-const API_URL = import.meta.env.VITE_API_URL || "";
+const API_URL = "https://blood-hive-blood-bank-server.vercel.app";
 
 function Register() {
   const [formData, setFormData] = useState({

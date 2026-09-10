@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import Logout from "./Logout";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const API_URL = "https://blood-hive-blood-bank-server.vercel.app";
+const API_URL = import.meta.env.VITE_API_URL || "https://blood-hive-blood-bank-server.vercel.app";
 
 function Dashboard() {
   const [donors, setDonors] = useState([]);

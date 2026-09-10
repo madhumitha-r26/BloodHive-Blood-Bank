@@ -105,7 +105,7 @@ function Dashboard() {
             DONOR'S DETAILS
           </h3>
           <div className="overflow-x-auto">
-            <table className="table mt-5 mb-10">
+            <table className="table mx-5 my-10">
               <thead>
                 <tr>
                   <th>Name</th>

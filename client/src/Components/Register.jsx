@@ -3,6 +3,8 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import "./Register.css"; // Import the custom CSS file
 
+const API_URL = import.meta.env.VITE_API_URL || "";
+
 function Register() {
   const [formData, setFormData] = useState({
     name: "",
@@ -22,7 +24,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://blood-hive-blood-bank-server-1v3qd84fj.vercel.app/api/register", {
+      const response = await fetch(`${API_URL}/api/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -52,7 +54,7 @@ function Register() {
   };
 
   return (
-    <div className="mt-12">
+    <div className="mt-12 mb-10">
       <Navbar />
       <h5 className="pt-10 text-center text-xl text-red-600 font-semibold">
         <u>DONOR REGISTRATION FORM</u>
@@ -155,7 +157,7 @@ function Register() {
             value={formData.address}
             onChange={handleChange}
             placeholder="Madurai, Tamil Nadu, India"
-            className="py-3 px-4 block w-full h-32 mt-3 border-gray-200 bg-neutral-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+            className="py-3 px-4 block w-full h-28 mt-3 border-gray-200 bg-neutral-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
             required
           ></textarea>
           <button

@@ -5,6 +5,8 @@ import Footer from "./Footer";
 import Logout from "./Logout";
 import DeleteIcon from "@mui/icons-material/Delete";
 
+const API_URL = import.meta.env.VITE_API_URL || "";
+
 function Dashboard() {
   const [donors, setDonors] = useState([]);
   const [filteredDonors, setFilteredDonors] = useState([]);
@@ -13,10 +15,10 @@ function Dashboard() {
   const fetchDonors = (group) => {
     const url =
       group && group !== "-SELECT-"
-        ? `https://blood-hive-blood-bank-server-1v3qd84fj.vercel.app/api/donors?blood_group=${encodeURIComponent(
+        ? `${API_URL}/api/donors?blood_group=${encodeURIComponent(
             group
           )}`
-        : "https://blood-hive-blood-bank-server-1v3qd84fj.vercel.app/api/donors";
+        : `${API_URL}/api/donors`;
 
     fetch(url)
       .then((response) => {
@@ -53,7 +55,7 @@ function Dashboard() {
 
   const handleDeleteDonor = (id) => {
     if (window.confirm("Are you sure you want to delete this donor?")) {
-      fetch(`http://localhost:5000/api/donors/${id}`, {
+      fetch(`${API_URL}/api/donors/${id}`, {
         method: "DELETE",
       })
         .then((response) => {

@@ -1,0 +1,33 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "blood-bank",
+  "keywords": [
+    "fetch",
+    "donors"
+  ],
+  "homepage": "https://github.com/madhumitha-r26/BloodHive-Blood-Bank#readme",
+  "bugs": {
+    "url": "https://github.com/madhumitha-r26/BloodHive-Blood-Bank/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madhumitha-r26/BloodHive-Blood-Bank.git"
+  },
+  "license": "ISC",
+  "author": "madhu",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "axios": "^1.20.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.9.5",
+    "nodemon": "^3.1.14"
+  }
+}

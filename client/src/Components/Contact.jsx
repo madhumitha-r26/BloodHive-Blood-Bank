@@ -32,7 +32,7 @@ function Contact() {
 
   return (
     <div>
-      <section id="contact" className="bg-transparent p-4 mt-0 pt-20">
+      <section id="contact" className="bg-transparent p-4 mt-0 pt-20 mb-5">
         <h2 className="text-center text-3xl text-red-700 uppercase font-semibold">
           Feel Free to Contact us
         </h2>
@@ -77,7 +77,7 @@ function Contact() {
         </form>
         <span className="text-center block mt-3 text-red-600">{result}</span>
 
-        <div className="flex justify-between mx-5 flex-wrap-reverse md">
+        <div className="flex justify-between mx-5 my-10 flex-wrap-reverse md">
           <div className="mt-2">
             <div className="flex">
               <PlaceIcon className="text-red-700" />

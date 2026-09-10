@@ -26,6 +26,15 @@ app.use("/api", donorRouter);
 // Use a fallback port so it doesn't crash if PORT is missing
 const PORT = process.env.PORT || 5000;
 
+// Add this after your middlewares and before the donorRouter
+
+app.get("/", (req, res) => {
+  res.json({ 
+    message: "BloodHive Backend is running successfully!",
+    status: "OK"
+  });
+});
+
 if (require.main === module) {
     app.listen(PORT, () => {
         console.log(`SERVER IS RUNNING ON PORT - ${PORT}`);
